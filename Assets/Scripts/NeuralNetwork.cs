@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NeuralNetwork : MonoBehaviour
+public class NeuralNetwork 
 {
     
     public CustomMatrix[] weights;
@@ -24,28 +24,30 @@ public class NeuralNetwork : MonoBehaviour
         
             weights[layer] = new CustomMatrix(_dataIn[layer].Length,_dataIn[layer-1].Length); //assign neurons to matrix
             weights[layer].Randomize();
-
+            
             biases[layer] = new CustomMatrix(_dataIn[layer].Length,1);
             biases[layer].Randomize(); 
         }
+        Debug.Log(weights[1].colums);
 
     }    
 
-    float[] FeedForward(float[] _inputs)
+    public float[] FeedForward(float[] _inputs)
     {
         CustomMatrix[] layer = new CustomMatrix[layers];
 
         layer[0] = CustomMatrix.FromArray(_inputs);
 
-        for(int i=0; i<layer.Length; i++)
+        for(int i=0; i<layer.Length-1; i++)
         {
-            layer[i+1] = CustomMatrix.Multiply(weights[i],layer[i]);
-            layer[i+1] = CustomMatrix.Add(layer[i+1],biases[i]);
+            
+            layer[i+1] = CustomMatrix.Multiply(weights[i+1],layer[i]);
+            layer[i+1] = CustomMatrix.Add(layer[i+1],biases[i+1]);
 
             layer[i+1].map(CustomMatrix.sigmoid);
         }
-
-        return CustomMatrix.ToArray(layer[layer.Length]);
+        Debug.Log("here");
+        return CustomMatrix.ToArray(layer[layer.Length-1]);
     }
         
 }

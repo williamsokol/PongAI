@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 // I could not find any matrix library for unity that isn't only 4x4 float_float
-public class CustomMatrix : MonoBehaviour
+public class CustomMatrix 
 {
     //I will probably improve or replace all of this later
 
@@ -42,6 +42,7 @@ public class CustomMatrix : MonoBehaviour
     
     public static CustomMatrix Multiply(CustomMatrix a,CustomMatrix b)
     {
+        Debug.Log(a);
         if(a.colums != b.rows)
         {
             Debug.LogError("unequal number of colums on a to rows on b :"+a+","+b);
@@ -136,7 +137,7 @@ public class CustomMatrix : MonoBehaviour
         {   
            for (int j=0; j<colums; j++)
             {
-               print(data);
+               Debug.Log(data);
             } 
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class XorTileGrid : MonoBehaviour
 {
-    
+    private const int V = 0;
     public GameObject pixelSprite;
     public int size;
 
@@ -39,7 +39,10 @@ public class XorTileGrid : MonoBehaviour
            
            for (int j=0; j<grid[i].Length; j++)
             {
-                float c = nn.weights[1].data[i][j];
+
+                float[] input = {i,j};
+
+                float c = nn.FeedForward(input)[0];
                 grid[i][j].GetComponent<SpriteRenderer>().color = new Color(c,c,c);
             } 
         }

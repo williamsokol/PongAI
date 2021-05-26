@@ -5,7 +5,7 @@ using UnityEngine;
 public class Main : MonoBehaviour
 {
     // Start is called before the first frame update
-        NeuralNetwork nn;
+    NeuralNetwork nn;
     public XorTileGrid g;
     
     void Start()
@@ -20,7 +20,7 @@ public class Main : MonoBehaviour
         nn = new NeuralNetwork(neuralNet);
         
         print(nn.weights[1].data[1][1]);
-        //g.FeedForwardUpdate(nn);
+        g.FeedForwardUpdate(nn);
     }
 
     // Update is called once per frame
