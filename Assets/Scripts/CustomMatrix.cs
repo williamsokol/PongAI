@@ -42,7 +42,7 @@ public class CustomMatrix
     
     public static CustomMatrix Multiply(CustomMatrix a,CustomMatrix b)
     {
-        Debug.Log(a);
+        
         if(a.colums != b.rows)
         {
             Debug.LogError("unequal number of colums on a to rows on b :"+a+","+b);
@@ -66,21 +66,56 @@ public class CustomMatrix
         }
         return result;
     }
+    public static CustomMatrix Multiply(CustomMatrix a,float b)
+    {
+        // this is a standard multiplcation loop 
+        for (int i=0; i<a.rows; i++)
+        {   
+            for (int j=0; j<a.colums; j++)
+            {
+                a.data[i][j] *= b;
+            } 
+        }
+        return a;
+    }
+    public static CustomMatrix Multiply2(CustomMatrix a,CustomMatrix b)
+    {
+        // this is a standard matrix add loop 
+        
+        for (int i=0; i<a.rows; i++)
+        {   
+            for (int j=0; j<a.colums; j++)
+            {
+                a.data[i][j] *= b.data[i][j];
+                
+            } 
+        }
+        return a;
+    }
 
     public static CustomMatrix Add(CustomMatrix a,CustomMatrix b)
     {
         // this is a standard matrix add loop 
-        CustomMatrix result = new CustomMatrix(a.rows,b.colums);
-        for (int i=0; i<result.rows; i++)
+        
+        for (int i=0; i<a.rows; i++)
         {   
-            for (int j=0; j<result.colums; j++)
+            for (int j=0; j<a.colums; j++)
             {
-                float sum =0;
-                for (int k=0; k<a.colums; k++)
-                {
-                    a.data[i][k] += b.data[k][j];
+                a.data[i][j] += b.data[i][j];
                 
-                } 
+            } 
+        }
+        return a;
+    }
+    public static CustomMatrix Subtract(CustomMatrix a,CustomMatrix b)
+    {
+        // this is a standard matrix subtract loop 
+        
+        for (int i=0; i<a.rows; i++)
+        {   
+            for (int j=0; j<a.colums; j++)
+            {
+                a.data[i][j] -= b.data[i][j];
                 
             } 
         }
@@ -88,24 +123,29 @@ public class CustomMatrix
     }
 
     public delegate float callBack(float num);
-    public void map(callBack fn)
+    public static CustomMatrix Map(CustomMatrix a,callBack fn)
     {
         // this is used to make an interchangable activation fucntion
         
-        for (int i=0; i<this.rows; i++)
+        for (int i=0; i<a.rows; i++)
         {   
-            for (int j=0; j<this.colums; j++)
+            for (int j=0; j<a.colums; j++)
             {
-               this.data[i][j] = fn(this.data[i][j]);
+               a.data[i][j] = fn(a.data[i][j]);
                 
             } 
         }
+        return a;
         
     }
 
     public static float sigmoid(float num)
     {
         return 1/(1+Mathf.Exp(-num));
+    }
+    public static float dsigmoid(float num)
+    {
+        return num *(1-num);
     }
 
     public static CustomMatrix FromArray(float[] arr)
@@ -129,6 +169,23 @@ public class CustomMatrix
         }
         return result;
         
+    }
+
+    public static CustomMatrix Transpose(CustomMatrix a)
+    {
+        // this is a standard matrix add loop 
+        CustomMatrix result = new CustomMatrix(a.colums,a.rows);
+        for (int i=0; i<a.rows; i++)
+        {   
+            for (int j=0; j<a.colums; j++)
+            {
+                //Debug.Log("test: "+ i+" "+j +" "+result.rows-1+ " "+result.colums-1);
+                //Debug.Log("test: "+ result.data[result.rows-1][result.colums-1]);
+                result.data[j][i] = a.data[i][j];
+                
+            } 
+        }
+        return result;
     }
 
     public void display()

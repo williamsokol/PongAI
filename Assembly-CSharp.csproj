@@ -39,6 +39,7 @@
      <Compile Include="Assets\Scripts\CustomMatrix.cs" />
      <Compile Include="Assets\Scripts\NeuralNetwork.cs" />
      <Compile Include="Assets\Scripts\Visuals\Main.cs" />
+     <Compile Include="Assets\Scripts\Visuals\NeralNetVis.cs" />
      <Compile Include="Assets\Scripts\Visuals\XorTileGrid.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/home/william/Unity/Hub/Editor/2019.4.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

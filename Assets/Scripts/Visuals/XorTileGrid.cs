@@ -39,19 +39,13 @@ public class XorTileGrid : MonoBehaviour
            
            for (int j=0; j<grid[i].Length; j++)
             {
-
-                float[] input = {i,j};
-
+                float x = i/((float)grid.Length-1);
+                float y = j/((float)grid[i].Length-1);
+                float[] input = {x,y};
+               // print("this: " +j/(float)grid.Length)+" "+i);
                 float c = nn.FeedForward(input)[0];
                 grid[i][j].GetComponent<SpriteRenderer>().color = new Color(c,c,c);
             } 
-        }
-    }
-    void Update()
-    {
-        if(Input.GetKeyDown("space"))
-        {
-            print(grid.Length);
         }
     }
 }
