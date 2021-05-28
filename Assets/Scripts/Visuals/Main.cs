@@ -37,6 +37,8 @@ public class Main : MonoBehaviour
         {
             neuralNet[i] = new float[2];
         }
+        //neuralNet[1] = new float[3];
+
         neuralNet[neuralNet.Length-1] = new float[1];
 
         nn = new NeuralNetwork(neuralNet);

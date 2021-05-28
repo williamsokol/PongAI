@@ -25,7 +25,7 @@ public class XorTileGrid : MonoBehaviour
             {
                 
                 Vector2 pos = new Vector2((i*1)-size/2,(j*1)-size/2);
-                grid[i][j] =  Instantiate(pixelSprite, pos, Quaternion.identity);
+                grid[i][j] =  Instantiate(pixelSprite, pos, Quaternion.identity,gameObject.transform);
             } 
         }
         print(grid.Length);
