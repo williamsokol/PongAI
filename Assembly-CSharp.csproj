@@ -36,6 +36,11 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Pong\Ball.cs" />
+     <Compile Include="Assets\Pong\GameData.cs" />
+     <Compile Include="Assets\Pong\JsonManager.cs" />
+     <Compile Include="Assets\Pong\NeralNetManager.cs" />
+     <Compile Include="Assets\Pong\Paddle.cs" />
      <Compile Include="Assets\Scripts\CustomMatrix.cs" />
      <Compile Include="Assets\Scripts\NeuralNetwork.cs" />
      <Compile Include="Assets\Scripts\Visuals\Main.cs" />
