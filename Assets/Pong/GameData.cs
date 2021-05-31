@@ -4,26 +4,23 @@ using UnityEngine;
 
 
 [System.Serializable]
-    public struct Data
+    public struct TrainData
+{
+    public float[] inputs;
+    public float[] outputs;
+    
+    public TrainData(float[] _input, float[] _output)
     {
-        public float paddlePos;
-        public float ballX;
-        public float ballY;
-        public float ballSpeed;
-        public float playerResponse;
-        public Data(float _paddlePos,float _ballX,float _ballY,float _ballSpeed, float _playerResponse)
-        {
-            paddlePos = _paddlePos;
-            ballX = _ballX;
-            ballY = _ballY;
-            ballSpeed = _ballSpeed;
-            playerResponse = _playerResponse;
-        }
+        this.inputs = _input;
+        this.outputs = _output;
     }
+}
 public class GameData 
 {
     
 
-   public List<Data> trainData = new List<Data>();
+   public List<TrainData> trainData = new List<TrainData>();
+
+   
    
 }

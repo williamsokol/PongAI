@@ -12,22 +12,31 @@ public class JsonManager : MonoBehaviour
     GameData gameData= new GameData();
     
 
-
-    private void Update() {
+    public TrainData CollectData()
+    {
+        float[] inputs = {paddle.transform.position.y,
+                        ball.transform.position.x,
+                        ball.transform.position.y,
+                        Mathf.Abs(ball.vx)};
+        float[] outputs = {paddle.movementX};
+        return new TrainData(inputs, outputs);
+    }
+    private void Update() 
+    {
+        if(GameManager.playMode == 1)
+        {
+            writeTrainData(); 
+        }    
         
-
-        
-
-       
-
     }
     void writeTrainData()
     {
-        gameData.trainData.Add (new Data(paddle.transform.position.y,
-                                ball.transform.position.x,
-                                ball.transform.position.y,
-                                Mathf.Abs(ball.vx),
-                                paddle.movementX));
+        float[] inputs = {paddle.transform.position.x,
+                        ball.transform.position.x,
+                        ball.transform.position.y,
+                        Mathf.Abs(ball.vx)};
+        float[] outputs = {(paddle.playerInput+1)/2};
+        gameData.trainData.Add (CollectData());
 
         string json = JsonUtility.ToJson(gameData);                             //class -> string
         print(Application.dataPath + "/thing.json");
@@ -38,7 +47,7 @@ public class JsonManager : MonoBehaviour
     {
         string json = File.ReadAllText(Application.dataPath + "/thing.json");   //json -> string
         GameData loadedGameData = JsonUtility.FromJson<GameData>(json);         //string -> class
-        Debug.Log(loadedGameData.trainData[12].paddlePos);
+        Debug.Log(loadedGameData.trainData[12].outputs[0]);
         return loadedGameData;
     }
     

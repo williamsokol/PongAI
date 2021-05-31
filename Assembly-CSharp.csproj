@@ -38,6 +38,7 @@
   <ItemGroup>
      <Compile Include="Assets\Pong\Ball.cs" />
      <Compile Include="Assets\Pong\GameData.cs" />
+     <Compile Include="Assets\Pong\GameManager.cs" />
      <Compile Include="Assets\Pong\JsonManager.cs" />
      <Compile Include="Assets\Pong\NeralNetManager.cs" />
      <Compile Include="Assets\Pong\Paddle.cs" />

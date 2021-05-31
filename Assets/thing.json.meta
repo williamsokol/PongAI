@@ -3,9 +3,9 @@ guid: 496d43995ecd577468da9ad15e13449e
 TextScriptImporter:
   externalObjects:
   - first:
-      type: 
-      assembly: 
-      name: 
+      type: 123
+      assembly: 123
+      name: 213
     second: {instanceID: 0}
   userData: 
   assetBundleName: 

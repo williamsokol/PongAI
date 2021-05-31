@@ -3,17 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public struct TrainData
-{
-    public float[] inputs;
-    public float[] outputs;
-    
-    public TrainData(float[] _input, float[] _output)
-    {
-        this.inputs = _input;
-        this.outputs = _output;
-    }
-}
+
 public class Main : MonoBehaviour
 {
     // Start is called before the first frame update
