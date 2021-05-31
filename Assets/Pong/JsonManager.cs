@@ -14,11 +14,12 @@ public class JsonManager : MonoBehaviour
 
     public TrainData CollectData()
     {
-        float[] inputs = {paddle.transform.position.y,
+        float[] inputs = {paddle.transform.position.x,
                         ball.transform.position.x,
                         ball.transform.position.y,
-                        Mathf.Abs(ball.vx)};
-        float[] outputs = {paddle.movementX};
+                        ball.vx,
+                        ball.vy};
+        float[] outputs = {(paddle.playerInput+1)/2};
         return new TrainData(inputs, outputs);
     }
     private void Update() 
@@ -31,11 +32,7 @@ public class JsonManager : MonoBehaviour
     }
     void writeTrainData()
     {
-        float[] inputs = {paddle.transform.position.x,
-                        ball.transform.position.x,
-                        ball.transform.position.y,
-                        Mathf.Abs(ball.vx)};
-        float[] outputs = {(paddle.playerInput+1)/2};
+        
         gameData.trainData.Add (CollectData());
 
         string json = JsonUtility.ToJson(gameData);                             //class -> string

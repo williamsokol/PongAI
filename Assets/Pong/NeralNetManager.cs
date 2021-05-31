@@ -9,11 +9,10 @@ public class NeralNetManager : MonoBehaviour
 
     public static float[] outputs;
     private void Start() {
-        float[][] nnSetUp = new float[4][];
-        nnSetUp[0] = new float[4];//input
-        nnSetUp[1] = new float[7];//hidden
-        nnSetUp[2] = new float[4];
-        nnSetUp[3] = new float[1];//output
+        float[][] nnSetUp = new float[3][];
+        nnSetUp[0] = new float[5];//input
+        nnSetUp[1] = new float[11];//hidden
+        nnSetUp[2] = new float[1];//output
 
         nn  = new NeuralNetwork(nnSetUp);
 
