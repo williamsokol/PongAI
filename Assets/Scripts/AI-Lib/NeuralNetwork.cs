@@ -30,7 +30,7 @@ public class NeuralNetwork
             biases[layer] = new CustomMatrix(_dataIn[layer].Length,1);
             biases[layer].Randomize(); 
         }
-        Debug.Log(weights[1].colums);
+//        Debug.Log(weights[1].colums);
 
     }    
 

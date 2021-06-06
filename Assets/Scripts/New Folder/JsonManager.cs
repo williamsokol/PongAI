@@ -33,7 +33,7 @@ public class JsonManager : MonoBehaviour
     // }
     public void writeTrainData()
     {
-        
+        print("test");
         gameData.trainData.Add (CollectData());
 
         string json = JsonUtility.ToJson(gameData);                             //class -> string
@@ -45,7 +45,7 @@ public class JsonManager : MonoBehaviour
     {
         string json = File.ReadAllText(Application.dataPath + "/"+ fileName +".json");   //json -> string
         GameData loadedGameData = JsonUtility.FromJson<GameData>(json);         //string -> class
-        Debug.Log(loadedGameData.trainData[12].outputs[0]);
+//        Debug.Log(loadedGameData.trainData[12].outputs[0]);
         return loadedGameData;
     }
     

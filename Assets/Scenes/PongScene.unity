@@ -1330,6 +1330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jsonManager: {fileID: 1408654510}
+  jsonName: thing
 --- !u!4 &1408654509
 Transform:
   m_ObjectHideFlags: 0
@@ -1376,8 +1377,9 @@ MonoBehaviour:
   AI: {fileID: 428450366}
   textAnimator: {fileID: 644989517}
   tutorialText: {fileID: 995613377}
+  neralNetManager: {fileID: 1408654508}
   _playMode: 0
-  trainTime: 60
+  trainTime: 30
 --- !u!1 &1695174395
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,7 +1405,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695174395}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1695174397
 Camera:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject player,AI;
     public Animator textAnimator;
     public TextMeshProUGUI tutorialText;
+    public NeralNetManager neralNetManager;
 
     [Header("Data")]
     public int _playMode;
@@ -39,10 +40,14 @@ public class GameManager : MonoBehaviour
     void FixedUpdate()
     {
         // write data when you moved, the timers on, and it's the start of the game
-        if(playerMoved &&trainTime < Time.timeSinceLevelLoad && playMode != AIMODE)
+        if(playerMoved && playMode != AIMODE)
         {
-            ChangeModeTo(1);
-            //jsonManager.writeTrainData();
+            jsonManager.writeTrainData();
+            if(trainTime < Time.timeSinceLevelLoad)
+            {
+                ChangeModeTo(1);
+            }
+            
         }
 
         //check if the player moved
@@ -61,7 +66,9 @@ public class GameManager : MonoBehaviour
             camera2.depth = 0;
             player.SetActive(true);
             AI.GetComponent<Paddle>().playMode = AIMODE;
+            neralNetManager.TrainNN(10000);
             playMode = AIMODE;
+
 
         }
     }

@@ -19,7 +19,7 @@ public class NeralNetManager : MonoBehaviour
 
 
         
-        TrainNN(10000);
+        //TrainNN(10000);
 
 
         
@@ -28,9 +28,9 @@ public class NeralNetManager : MonoBehaviour
         //print(nn.FeedForward(new float[]{0,0})[0]);
     }
 
-    void TrainNN(int trainCycles)
+    public void TrainNN(int trainCycles)
     {
-        print("test");
+        
         GameData trainingData = jsonManager.readTrainData(jsonName);
         for(int i=0;i<trainCycles; i++)
         {
