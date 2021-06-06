@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Pong/PongScene.unity
+- path: Assets/Scenes/PongScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
