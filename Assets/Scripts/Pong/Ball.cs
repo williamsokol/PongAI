@@ -39,6 +39,14 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
 //        print("hit");
+        Paddle paddle = other.gameObject.GetComponent<Paddle>();
+        if(paddle != null)
+        {
+
+            vx = vx/2+(paddle.playerInput/2);
+            //vy = -(vy/2 + paddle.movementX/2);  
+        }
+        
         vy = -vy;  
     }
 }

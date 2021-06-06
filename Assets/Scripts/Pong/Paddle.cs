@@ -27,25 +27,17 @@ public class Paddle : MonoBehaviour
     {
         if(playMode == 0)
         {
-            PlayerControll();
+            playerInput = Input.GetAxis("Horizontal");
         }else if(playMode == 1){
-            AIControll();
+            playerInput = (NeralNetManager.outputs[0]*2-1);
         }
+
+        playerInput *= speed;
+        movementX = transform.position.x+playerInput*Time.deltaTime;
+        transform.position = new Vector2(movementX,transform.position.y);
 
         if(transform.position.x > right){transform.position = new Vector2( right, transform.position.y);}
         if(transform.position.x < left){transform.position = new Vector2( left, transform.position.y);}
     }
-    void PlayerControll()
-    {
-        playerInput = Input.GetAxis("Horizontal");
-        movementX = transform.position.x+playerInput*speed*Time.deltaTime;
-
-        transform.position = new Vector2(movementX,transform.position.y);
-    }
-    void AIControll()
-    {
-        movementX = transform.position.x+(NeralNetManager.outputs[0]*2-1)*speed*Time.deltaTime;
-
-        transform.position = new Vector2(movementX,transform.position.y);
-    }
+    
 }
